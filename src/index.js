@@ -36,11 +36,17 @@ io.on('connection', (socket)=>{
 
 
 app.use('/api', rutas);
+
+
 app.use('/login', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../vistas/login.html'))
 })
 
+app.use('/registro', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../vistas/registro.html'))
+})
 
+app.get('/', (req, res)=>res.send('Bienvenido'))
 
 server.listen(port, () => console.log('servidor iniciado en el perto: ' + port))
 

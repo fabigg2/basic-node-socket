@@ -22,14 +22,22 @@ exports.crearNuevoUsuario = async (req, res) => {
 
 
 exports.login = async (req, res) => {
+    console.log(req.body);
+    if (!req.body.correo || !req.body.clave)
+        return res.json({
+            status: false,
+            mensaje: 'usuario y contraseña son requeridos'
+
+        })
 
     try {
-        const persona = ModeloPersoan.findOne({ correo: req.correo });
-        if (persona && persona.clave === req.clave) {
+        const persona = await ModeloPersoan.findOne({ correo: req.body.correo });
+        console.log(persona);
+        if (persona && persona.clave === req.body.clave) {
             return res.json({
                 status: true,
-                mensaje: 'usuario creado',
-                usuario: nuevaPersona
+                mensaje: 'successful',
+                usuario: persona
 
             })
         }
@@ -40,6 +48,7 @@ exports.login = async (req, res) => {
         })
 
     } catch (error) {
+        console.log(error);
         res.json({
             status: false,
             mensaje: 'error en el servidor'
