@@ -22,6 +22,8 @@ form.onsubmit = (e) => {
         console.log(data);
         if(!data.status){
             altr.style.display='block'
+        }else{
+            document.location.href ='http://localhost:4000/sala'
         }
     })
     

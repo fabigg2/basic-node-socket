@@ -1,5 +1,6 @@
 const form = document.getElementById('form');
 const altr = document.getElementById('alert');
+const altrs = document.getElementById('alert1');
 
 
 form.onsubmit = (e) => {
@@ -25,9 +26,8 @@ form.onsubmit = (e) => {
             if (!data.status) {
                 altr.style.display = 'block';
             }else{
-                altr.textContent = 'Usuario creado';
-                altr.classList.remove('text-danger');
-                altr.classList.add('text-success');
+                altrs.style.display = 'block';
+
             }
         })
 

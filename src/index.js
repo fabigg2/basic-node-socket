@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 
-mongoose.connect('mongodb://localhost:27017/test', (error) => {
+mongoose.connect('mongodb+srv://admin:admin@cluster0.h2efj.mongodb.net/salas', (error) => {
     if (error)
         return console.log('error al conectar la base de datos');
     console.log('base de datos conectada satisfatoriamente');
@@ -44,6 +44,10 @@ app.use('/login', (req, res) => {
 
 app.use('/registro', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../vistas/registro.html'))
+})
+
+app.use('/sala', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../vistas/sala.html'))
 })
 
 app.get('/', (req, res)=>res.send('Bienvenido'))
