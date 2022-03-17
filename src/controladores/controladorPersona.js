@@ -1,10 +1,13 @@
 const ModeloPersoan = require("../modelos/ModeloPersoan")
 
+//metodo crea una nueva persona y la guarda en la base de datos
 exports.crearNuevoUsuario = async (req, res) => {
 
     try {
-        const nuevaPersona = new ModeloPersoan(req.body);
-        await nuevaPersona.save();
+        const nuevaPersona = new ModeloPersoan(req.body); //crea un modelo con los datos enviado de la persona
+        await nuevaPersona.save(); // gurada los datos en la base de datos
+
+        //envia una respuesta con el usuario creado
         res.json({
             status: true,
             mensaje: 'usuario creado',
@@ -12,6 +15,7 @@ exports.crearNuevoUsuario = async (req, res) => {
 
         })
     } catch (error) {
+        //envia una respuesta si hay algun error
         res.json({
             status: false,
             mensaje: 'error en el servidor'
@@ -20,9 +24,8 @@ exports.crearNuevoUsuario = async (req, res) => {
     }
 }
 
-
+//metodo para login usuado correo y contraseña
 exports.login = async (req, res) => {
-    console.log(req.body);
     if (!req.body.correo || !req.body.clave)
         return res.json({
             status: false,
@@ -31,8 +34,9 @@ exports.login = async (req, res) => {
         })
 
     try {
+        //busca los datos filtrando por correo
         const persona = await ModeloPersoan.findOne({ correo: req.body.correo });
-        console.log(persona);
+        //compara la contraseña, si es igual envia los datos del usuario
         if (persona && persona.clave === req.body.clave) {
             return res.json({
                 status: true,
@@ -41,6 +45,7 @@ exports.login = async (req, res) => {
 
             })
         }
+        //si el usuario o l acontraseña es incorrecta envia esta respuesta
         res.json({
             status: false,
             mensaje: 'usuario o contraseña incorrecto'
@@ -48,7 +53,7 @@ exports.login = async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error);
+        //envia una respuesta si hay un error
         res.json({
             status: false,
             mensaje: 'error en el servidor'

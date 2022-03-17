@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-
+// esquema para modelo de persona 
 const modeloPersona = new Schema({
     nombre: String,
     correo: String,
@@ -8,5 +8,5 @@ const modeloPersona = new Schema({
     clave: String
 })
 
-
+// exportar modelo persona
 module.exports = model('persona', modeloPersona);

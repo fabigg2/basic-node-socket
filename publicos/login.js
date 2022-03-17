@@ -1,10 +1,10 @@
-const form = document.getElementById('form');
+const form = document.getElementById('form'); 
 const altr = document.getElementById('alert');
 
-
+//metodo se ejecuta al hacer submit en el formulario
 form.onsubmit = (e) => {
-    const correo = document.getElementById('correo');
-    const clave = document.getElementById('clave');
+    const correo = document.getElementById('correo'); //obtiene el correo 
+    const clave = document.getElementById('clave'); //obtiene la contraseña
     e.preventDefault();
     altr.style.display='none'
     // console.log('correo', correo.value, 'clave', clave.value);
