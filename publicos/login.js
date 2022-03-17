@@ -9,6 +9,7 @@ form.onsubmit = (e) => {
     altr.style.display='none'
     // console.log('correo', correo.value, 'clave', clave.value);
 
+    //envia los datos al sevidor 
     fetch('http://localhost:4000/api/login', {
         method: 'POST',
         body: JSON.stringify({ correo:correo.value, clave:clave.value}),
@@ -23,7 +24,8 @@ form.onsubmit = (e) => {
         if(!data.status){
             altr.style.display='block'
         }else{
-            document.location.href ='http://localhost:4000/sala'
+            localStorage.setItem('usuario', JSON.stringify(data.usuario))
+            document.location.href ='http://localhost:4000/sala' //envia a la sala
         }
     })
     

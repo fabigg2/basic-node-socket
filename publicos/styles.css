@@ -16,3 +16,31 @@
 body{
     background: linear-gradient(to bottom, #b6b6b6, #e7e7e7, #b6b6b6);
 }
+
+.sala{
+    width: 90%;
+    height: 90%;
+}
+
+.sala-item{
+    width: 100px;
+}
+
+.flex-r{
+    display: flex;
+}
+
+.cursor-ṕoiner{
+    cursor: pointer;
+}
+
+.list-group{
+    padding: 10px;
+    width: 30%;
+    height: 300px;
+    overflow-y: scroll;
+}
+.main{
+    width: 70%;
+    height: 300px;
+}
